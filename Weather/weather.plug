@@ -1,0 +1,9 @@
+[Core]
+Name = Weather
+Module = weather
+
+[Documentation]
+Description = Use hefengweather API to generate the forcast.
+
+[Python]
+Version = 2+
