@@ -3,7 +3,6 @@
 
 import json
 import requests
-import subprocess
 
 from errbot import BotPlugin, botcmd
 
@@ -11,12 +10,11 @@ from errbot import BotPlugin, botcmd
 TOKEN = ''
 
 # api地址
-URL = "https://free-api.heweather.com/v5/weather?city={0}&key={1}".format(
-    TOKEN)
+URL = "https://free-api.heweather.com/v5/weather?city={0}&key={1}"
 
 
 class Weather(BotPlugin):
-    """Commands to get the weather info from hefengweather API."""
+    """Commands to get the weather info from heweather API."""
     @botcmd()
     def weather(self, msg, args):
         """
@@ -24,7 +22,7 @@ class Weather(BotPlugin):
         Default will be Beijing.
         """
         url = (URL.format(args) if len(args)
-               else URL.format('beijing')).strip()
+               else URL.format('beijing',TOKEN)).strip()
         res = requests.get(url)
         data = json.loads(res.text)
         day = data['HeWeather5'][0]['daily_forecast'][0]
